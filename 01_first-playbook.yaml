@@ -1,8 +1,7 @@
----
-
-- name: First playbook
-  hosts: 3.242.22
-
-  tasks:
-  - name: TEST CHECK 
-    ping: 
+---                       # Start of YAML document
+- name: First playbook      # Name of the playbook for identification
+  hosts: localhost          # Target host IP where the tasks will be executed
+  tasks:                   # List of tasks to run on the target host(s)
+  - name: TEST CHECK       # Name/description of this specific task
+    ping:                  # Ansible module that tests connectivity to the host (like a ping)
+                            # Returns "pong" if the host is reachable
