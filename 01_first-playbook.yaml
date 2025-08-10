@@ -1,0 +1,8 @@
+---
+
+- name: First playbook
+  hosts: 3.242.22
+
+  tasks:
+  - name: TEST CHECK 
+    ping: 
