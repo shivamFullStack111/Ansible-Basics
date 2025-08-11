@@ -1,0 +1,48 @@
+---
+# To run this playbook on a remote server, specify the server's IP address in your Ansible inventory file (e.g., inventory.ini)
+# Example inventory.ini:
+# [all]     we can provide 
+# 192.168.1.100 ansible_user=shivamm111
+
+
+- name: Install nginx on Remote server
+  hosts: all   # "all" means it will run on all hosts listed in the inventory file
+  become: true # Run commands as root (sudo)
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx     # Exact name of service 
+        state: present  # Ensure nginx is installed
+
+    - name: Start and enable nginx
+      service:
+        name: nginx      # Exact name of service 
+        state: started   # Ensure nginx is running
+        enabled: true    # Ensure nginx starts on boot
+
+
+# -----------------------------------------------------------------------------------------------------------------------------
+
+# HOW TO CREATE GROUP OF HOST USING THIS GROUP WE CAN RUN AND CONFIGURE IN MULTIPLE HOSTS AT SAME TIME 
+
+# Group 1: Web servers
+
+# [web]
+# 192.168.1.10 ansible_user=shivam ansible_ssh_private_key_file=~/.ssh/id_rsa
+# 192.168.1.11 ansible_user=shivam ansible_password=your_password
+
+# Group 2: Database servers
+
+# [db]
+# 192.168.1.20 ansible_user=shivam ansible_password=your_password
+
+# All servers group
+
+# [all_servers:children]   # This is a meta-group made of other groups
+# web
+# db
+
+# -------------------------------EXAMPLE USAGE ----------------------------------------------
+# - name: Install nginx on web servers
+#   hosts: web   # will target only the [web] group from inventory
+#   become: true
