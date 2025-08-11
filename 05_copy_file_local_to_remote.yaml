@@ -1,0 +1,11 @@
+--- 
+
+- name: Copy localhost file to remote server 
+  hosts: all
+  become: true
+  tasks:
+    - name: Copy local file to remote 
+      copy: 
+        src: /myTestFile       #file location which you want to copy to remote 
+        dest: /myTestFile      #location in remote server where the copy file will create 
+ 
