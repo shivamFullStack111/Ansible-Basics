@@ -11,3 +11,4 @@
         owner: shivamm111        # new owner name in remote server
         group: shivamm111        # new group name in remote server
         mode: 0777               # changing permissions of file/dir
+        backup: true             # every time change in this file using this ansible file when run then evry time backup of file will be create on remote file
