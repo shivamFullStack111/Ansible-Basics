@@ -1,0 +1,13 @@
+--- 
+
+- name: copy file with change permission admin and user of file in remote server 
+  hosts: all 
+  become: true
+  tasks: 
+    - name: copy, change permission, admin, user 
+      copy: 
+        src: /myTestFile
+        dest: /myTestFile2 
+        owner: shivamm111        # new owner name in remote server
+        group: shivamm111        # new group name in remote server
+        mode: 0777               # changing permissions of file/dir
