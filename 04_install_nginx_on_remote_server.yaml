@@ -28,13 +28,13 @@
 # Group 1: Web servers
 
 # [web]
-# 192.168.1.10 ansible_user=shivam ansible_ssh_private_key_file=~/.ssh/id_rsa
-# 192.168.1.11 ansible_user=shivam ansible_password=your_password
+# 192.168.1.10 ansible_user=shivam 
+# 192.168.1.11 ansible_user=shivam 
 
 # Group 2: Database servers
 
 # [db]
-# 192.168.1.20 ansible_user=shivam ansible_password=your_password
+# 192.168.1.20 ansible_user=shivam 
 
 # All servers group
 
