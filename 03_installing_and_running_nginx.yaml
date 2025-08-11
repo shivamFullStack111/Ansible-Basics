@@ -1,0 +1,16 @@
+---                                     # Start of YAML document
+- name: Installing and running nginx     # Playbook name - describes its purpose
+  hosts: localhost                       # Target host - here it's the local machine
+  become: true                            # Run tasks with elevated privileges (sudo/root access)
+
+  tasks:                                  # List of tasks to be performed
+    - name: Installing nginx              # Task 1: Install Nginx package
+      apt:                                # Using 'apt' module (for Debian/Ubuntu systems)
+        name: nginx                       # Package name to install
+        state: present                    # 'present' = ensure it's installed; 'absent' = remove it
+
+    - name: Start and enable nginx        # Task 2: Start Nginx and enable it at boot
+      service:                            # Using 'service' module to manage services
+        name: nginx                       # Service name to manage
+        state: started                    # Ensure the service is running
+        enabled: true                     # Enable the service to start automatically on boot
