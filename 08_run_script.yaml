@@ -1,0 +1,9 @@
+- name: Running script in remote server             # Playbook name: describes its purpose
+  hosts: all                                        # Target: run on all hosts from inventory
+  become: true                                      # Use sudo/root privileges for execution
+
+  tasks:                                            # List of tasks to run
+    - name: Running .sh file in remote server       # Task name: run a shell script
+      shell: bash /home/shivamm111/personal/myScript.sh   # Use 'shell' module to execute the script
+      args:                                         # Additional arguments for the task
+        chdir: /home/shivamm111/personal            # Change working directory before running the script
