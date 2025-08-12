@@ -1,0 +1,19 @@
+---
+
+- name: create environment                   
+  hosts: all                                
+  tasks:                                    
+    - name: creating env                     
+      cron:                                   # Using Ansible cron module to manage cron jobs or env vars (required)
+        name: ENV_NAME2                       # Name identifier for the environment variable (required)
+        env: yes                             # Specifies this is an environment variable, not a job (required)
+        job: ENV value                       # The value assigned to the environment variable (required)
+        user: shivamm111                      # The user to set this environment variable for (required)
+        insertbefore: ENV_NAME1              # Insert this variable before another named cron entry (optional)
+        
+        # insertafter: ENV_NAME3              # Insert this variable after another named cron entry (optional)
+        # state: absent                      # Commented out: if set, it would delete this env variable (optional)
+
+
+# to check ENV is created or not RUN: crontab -l   # Command to verify cron environment variables for user (optional)
+# RESULT LIKE: ENV_NAME="ENV value"               # Expected output in cron listing
