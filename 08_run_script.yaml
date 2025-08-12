@@ -1,3 +1,5 @@
+---
+
 - name: Running script in remote server             # Playbook name: describes its purpose
   hosts: all                                        # Target: run on all hosts from inventory
   become: true                                      # Use sudo/root privileges for execution
