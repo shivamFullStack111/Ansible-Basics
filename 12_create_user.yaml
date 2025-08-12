@@ -9,6 +9,6 @@
         name: user-02                           # Username to create (required)
         home: /home/user-02                     # Path for the user’s home directory (optional, default auto-creates)
         shell: /bin/bash                        # Login shell for the user (optional, default /bin/sh)
-        state: present                          # State of the user account: present=create, absent=delete (required)
+        state: absent                          # State of the user account: present=create, absent=delete (required)
         #groups: group1,group2                  # Assign to multiple groups (optional)
         #group: group1                          # Assign to a single primary group (optional)

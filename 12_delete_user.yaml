@@ -1,0 +1,11 @@
+---
+
+- name: Delete user
+  hosts: all
+  become: true
+  tasks:
+    - name: deleting user
+      user:                                     # Using Ansible user module to manage users (required)
+        name: user-02                           # Username to delete (required)
+        state: absent                           # State of the user account: present=create, absent=delete (required)
+        remove: true                            # Also remove the user's home directory and mail spool (optional)
