@@ -4,7 +4,7 @@
   hosts: all                                       # Target hosts where the playbook runs (required)
   tasks:                                           # List of tasks to execute (required)
     - name: print hello world using cron           # Task description (required)
-      ansible.builtin.cron:                        # Using Ansible cron module to schedule a cron job (required)
+      cron:                                      # Using Ansible cron module to schedule a cron job (required)
         name: create test logs using cronjob       # Unique identifier for the cron job (required)
         month: "*"                                 # Run every month (optional, default "*")
         day: "*"                                   # Run every day of month (optional, default "*")
@@ -13,3 +13,7 @@
         minute: "*"                                # Run every minute (optional, default "*")
         user: shivamm111                           # The user to run the cron job as (required)
         job: echo $(date)>>myCronLog.log           # Command to run, appending date to log file (required)
+        # disabled: true                           # if you want to disable cronjob               
+
+
+# crontab -l         this command is used to check scheduled cronjobs -u username is to find for specific user

@@ -1,0 +1,13 @@
+---
+
+- name: Delete existing cronjob               # Playbook description, name of this play (required)
+  hosts: all                                  # Target hosts where the playbook runs (required)
+  tasks:                                     # List of tasks to execute (required)
+    - name: Deleting cronjob                  # Task description (required)
+      cron:                                   # Using Ansible cron module to manage cron jobs (required)
+        name: create test logs using cronjob       # Name of the cron job to identify it (required)
+        state: absent                          # Remove/delete the cron job (required)
+        user: shivamm111                       # The user whose cron job will be deleted (required)
+
+# crontab -l                                  # Shell command to list all cron jobs for the current user (optional)
+# crontab -u username -l                      # Shell command to list cron jobs for a specific user (optional)
