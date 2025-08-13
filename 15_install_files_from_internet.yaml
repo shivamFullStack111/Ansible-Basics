@@ -1,0 +1,12 @@
+---
+
+- name: install files from the internet
+  hosts: all
+  tasks:
+    - name: installing python
+      get_url:                                  # Ansible module to download files from the internet (required)
+        url: https://www.python.org/ftp/python/3.13.6/Python-3.13.6.tar.xz   # File URL to download (required)
+        dest: /home/shivamm111/personal/        # Destination path on target system (required)
+        mode: 0777                              # File permissions in numeric form (optional, default 0644)
+        owner: shivamm111                       # File owner after download (optional, default current user)
+        group: shivamm111                       # File group after download (optional, default current group)
