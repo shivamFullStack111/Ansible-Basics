@@ -1,0 +1,23 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for deploy-site-on-nginx
+- name: installing web server 
+  become: true
+  apt: 
+    name: "{{web_server_name}}" 
+    state: present 
+    update_cache: true 
+
+- name: copy html file to /var/www/html/index.html
+  become: true
+  copy: 
+    src: index.html   # this will copy ../files/index.html
+    dest: "{{nginx_html_destination_path}}"
+  
+- name: starting web server 
+  become: true
+  service: 
+    name: "{{web_server_name}}" 
+    state: reloaded 
+
+    

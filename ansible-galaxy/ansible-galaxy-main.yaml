@@ -1,0 +1,17 @@
+---
+
+- name: Install and deploy site on web server
+  become: true                               # Run tasks with elevated privileges (required)
+  hosts: all                                 # Target all hosts (required)
+  roles:                                     # Roles are reusable sets of tasks, files, templates, etc. (required)
+  
+    - deploy-site-on-web_server              # Role to deploy the website:
+                                              # 1. Installs the web server (e.g., nginx or apache) using variables for flexibility.
+                                              # 2. Copies the HTML file(s) to the web server's document root.
+                                              # 3. Reloads/restarts the web server to apply changes.
+                                              # This role makes deploying a website reusable across multiple hosts.
+
+    - firewall-allow-80-and-reload           # Role to manage firewall rules:
+                                              # 1. Opens TCP port 80 to allow HTTP traffic.
+                                              # 2. Reloads the firewall to apply the new rule.
+                                              # Ensures the deployed website is accessible externally.

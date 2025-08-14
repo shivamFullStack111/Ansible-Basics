@@ -1,0 +1,7 @@
+#SPDX-License-Identifier: MIT-0
+---
+# vars file for deploy-site-on-nginx
+
+
+nginx_html_destination_path: /var/www/html/index.html
+web_server_name: nginx

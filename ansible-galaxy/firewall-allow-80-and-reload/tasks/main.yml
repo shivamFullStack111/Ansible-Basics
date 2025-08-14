@@ -1,0 +1,14 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for firewall-allow-80-and-reload
+
+- name: Allowing tcp port 80 
+  ufw: 
+    state: enabled 
+    rule: allow 
+    port: 80 
+    protocol: tcp 
+
+  notify:
+    - Reload firewall
+  
