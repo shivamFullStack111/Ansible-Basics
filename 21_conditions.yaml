@@ -1,0 +1,18 @@
+# CMD: ansible serverA -m setup              this command print the detail of OS in key value pair which is helpful for conditions 
+---
+
+- name: Conditions
+  hosts: serverA
+  become: true
+  tasks:
+    - name: Install nginx in Ubuntu
+      apt:
+        name: nginx
+        state: present
+      when: ansible_os_family == "Debian"           # Runs this task only if OS family is Debian/Ubuntu
+
+    - name: Install nginx in CentOS
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"          # Runs this task only if OS family is RedHat/CentOS
