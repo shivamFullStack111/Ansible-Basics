@@ -1,0 +1,18 @@
+---
+
+- name: Handlers
+  hosts: all
+  become: true
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+        state: present
+      notify:                                   # Notify triggers a handler when this task makes a change
+        - start nginx                           # Calls the handler named "start nginx" only if this task changes something
+
+  handlers:
+    - name: start nginx                        # Handler name that will run when notified by a task (required)
+      service:                                 # Ansible module to manage services (required)
+        name: nginx                            # Service name to manage (required)
+        state: started                         # Desired state of the service (required)
