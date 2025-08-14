@@ -1,0 +1,24 @@
+---
+
+- name: Variables
+  hosts: all
+  vars:                                      # Define variables for this playbook (required if using variables)
+    message: this is variable message       # Variable name and value (required)
+
+  tasks:
+    - name: Print variable
+      debug:                                 # Ansible module to print debug messages (required)
+        msg: "{{ message }}"                 # Use variable with Jinja2 template syntax to display its value (required)
+
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+# VARIABLE IN /etc/ansible/hosts file 
+
+# In hosts file we also can add ip-address of server using variable and access using variable which is very helpfull because remembering the ip-address is not easy 
+
+# EXAMPLE
+# serverA ansible_host=172.16.210.128 ansible_user=shivamm111
+
+#  in this example we have declared a variable serverA and privide host 
+# now we can access this host using serverA 
