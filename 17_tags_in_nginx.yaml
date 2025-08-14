@@ -1,0 +1,26 @@
+# In ansible tags are used to identify tasks in ansible Playbook 
+# we can avoid task or run specific task using the tags 
+
+# CMD: ansible-playbook playbook.yml --list-tags                   list tags in ansible-playbook file 
+# CMD: ansible-playbook playbook.yml --tags "install-nginx"        Run specific tasks in ansible-playbook file | for multiple provide comma ","" seprated
+# CMD: ansible-playbook playbook.yml --skip-tags "configure"       skip specific tasks in ansible 
+
+
+---                                    
+- name: Installing and running nginx    
+  hosts: localhost                       
+  become: true                          
+
+  tasks:                                 
+    - name: Installing nginx              # Task 1: Install Nginx package
+      apt:                                # Using 'apt' module (for Debian/Ubuntu systems)
+        name: nginx                       # Package name to install
+        state: present                    # 'present' = ensure it's installed; 'absent' = remove it
+      tags: install-nginx
+
+    - name: Start and enable nginx        # Task 2: Start Nginx and enable it at boot
+      service:                            # Using 'service' module to manage services
+        name: nginx                       # Service name to manage
+        state: started                    # Ensure the service is running
+        enabled: true                     # Enable the service to start automatically on boot
+      tags: start-nginx
