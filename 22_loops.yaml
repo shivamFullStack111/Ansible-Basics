@@ -1,0 +1,17 @@
+---
+
+- name: Loops
+  hosts: all
+  vars:                                        # Define variables for this playbook
+    arr: [i, am, shivam]                       # 'arr' is a list variable with 3 items
+
+  tasks:
+    - name: loop using loop
+      debug:
+        msg: "{{item}}"                        # 'item' is a special variable that holds the current value in the loop
+      loop: [hii, byy, good, night]             # Loop over this inline list, runs task once for each value
+
+    - name: loop using variable
+      debug:
+        msg: "{{item}}"                        # 'item' will hold each value from the variable 'arr' in every loop iteration
+      loop: "{{arr}}"                          # Loop over the list stored in variable 'arr'
