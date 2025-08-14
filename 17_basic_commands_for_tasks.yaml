@@ -1,0 +1,29 @@
+# 1. Ping test
+ansible 192.168.1.10 -u ubuntu -m ping
+
+# 2. Uptime check
+ansible 192.168.1.10 -u ubuntu -m command -a "uptime"
+
+# 3. Disk usage
+ansible 192.168.1.10 -u ubuntu -m command -a "df -h"
+
+# 4. Memory usage
+ansible 192.168.1.10 -u ubuntu -m command -a "free -m"
+
+# 5. Create directory
+ansible 192.168.1.10 -u ubuntu -m file -a "path=/tmp/testdir state=directory mode=0755"
+
+# 6. Create file
+ansible 192.168.1.10 -u ubuntu -m file -a "path=/tmp/hello.txt state=touch"
+
+# 7. Install nginx
+ansible 192.168.1.10 -u ubuntu -b -m apt -a "name=nginx state=present update_cache=yes"
+
+# 8. Start nginx service
+ansible 192.168.1.10 -u ubuntu -b -m service -a "name=nginx state=started enabled=yes"
+
+# 9. Copy file from local to remote
+ansible 192.168.1.10 -u ubuntu -m copy -a "src=/home/ubuntu/index.html dest=/var/www/html/index.html"
+
+# 10. Check logged in users
+ansible 192.168.1.10 -u ubuntu -m command -a "who"
